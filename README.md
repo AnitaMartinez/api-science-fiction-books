@@ -16,5 +16,5 @@ npm install
 Make sure mongoDB is running ( `mongod`).
 
 ```
-node app.js
+node server.js
 ```
