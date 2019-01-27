@@ -12,9 +12,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-
 app.get('/books', (req, res) => {
-
 // Connect using MongoClient
     MongoClient.connect(url, function(err, client) {
         if(!err){
@@ -23,16 +21,12 @@ app.get('/books', (req, res) => {
                 res.send(items);
                 client.close();
             });
-
         }
     });
-
 });
 
 app.post('/books', (req, res) => {
-
     if(req.body.title && req.body.author){
-
         MongoClient.connect(url, function(err, client) {
             if(!err){
                 const col = client.db(dbName).collection('books');
@@ -43,16 +37,9 @@ app.post('/books', (req, res) => {
                 });
             }
         });
-
     } else {
         res.send('Error: You must send at least title and author');
     }
-
 });
-
-
-
-
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
